@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_name"
+        android:layout_gravity="center_horizontal"
+        android:hint="Enter video name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_duration"
+        android:layout_gravity="center_horizontal"
+        android:hint="Duration in seconds"
+        android:inputType="number" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_url"
+        android:layout_gravity="center_horizontal"
+        android:hint="URL"
+        android:inputType="textUri" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Video"
+        android:id="@+id/button3"
+        android:layout_gravity="center_horizontal"
+        android:onClick="AddNewVideoButtonPressed" />
+</LinearLayout>

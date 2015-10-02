@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\classes-47da92b9664a09cfa054ccb6a545705fe0ba3698.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\okio-1.6.0-b0974f981d326af017d3dd05b5704ed7968347a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-0bb844e617bb723d1605d7e2c8ec791eb512e9ce.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-0cf429a3c6bc7666b26c4fcab4c73fa51f18b16b.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\commons-io-2.4-7e5b9f6ee6aab8b791468344bb5d183b4433c8f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\pre-dexed\debug\classes-95c81c77ab07f94e8f136c8fef87762b5e662f02.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\pre-dexed\debug\classes-8dbd901aaf894f70f51e24fb0e7fcf879c90ccd5.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\gson-2.3.1-21450fc86ef3128239c87c9991c8d94ab47f63f3.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\guava-18.0-656648deb444207d1c91478bfa007138a16b2d37.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\classes-479862acceceb68a07ab104dcf84315b345ad83c.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-b4ced8f1fa905693aea70e571bdfa142672592b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="C:\Users\chrisyogini\Downloads\Peer Review\ass 2b\student 3\androidstudio-client-VideoApp\app\build\intermediates\pre-dexed\debug\okhttp-2.5.0-ffa24a72df806bd910d6aaec6e229cc7ac949dd4.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\SelfieClientSide\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-51bed7e1a9b219432b5cd2a6cb58a3f70d8d6d77.jar" />
+    </item>
+
+</items>

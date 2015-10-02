@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SelfieApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="error">Some error</string>
+
+</resources>
