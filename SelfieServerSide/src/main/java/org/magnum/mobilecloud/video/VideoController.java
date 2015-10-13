@@ -90,6 +90,7 @@ public class VideoController {
 		video.setOwner(principal.getName());
 		video.setLikes(0);
 		
+		
 		// Note: let's check the existence of the video and the owner
 		Video savedVideo = m_videoRepository.findById(video.getId());
 		if (savedVideo != null) {
@@ -104,8 +105,9 @@ public class VideoController {
 				return null;
 			}
 		}
-		
-		return m_videoRepository.save(video);
+		Video return_video = save(video);  // sets the URL when it saves it
+		Video another_video =  m_videoRepository.save(video);
+		return return_video; 
 	}
 
 	@RequestMapping(value = VideoSvcApi.VIDEO_SVC_PATH + "/{id}/like", method = RequestMethod.POST)
@@ -209,6 +211,7 @@ public class VideoController {
 			@RequestMapping(value=VideoSvcApi.VIDEO_DATA_PATH, method=RequestMethod.POST)
 			public  @ResponseBody VideoStatus setVideoData(@PathVariable("id") long id, @RequestParam("data") MultipartFile data,  HttpServletResponse response)
 			{
+				System.out.println("inside setting video data ************************");
 				Video savedVideo = getVideoById(id, response);
 				if (savedVideo == null) {
 					return null;
@@ -217,6 +220,10 @@ public class VideoController {
 				else
 				{
 					try {
+						videoDataMgr = VideoFileManager.get();
+						System.out.println("************ savedVideo "+savedVideo.getUrl());
+						if (data == null)
+							System.out.println("***************** data is NULL *********");
 	                    saveSomeVideo(savedVideo, data);
 	                 } catch (IOException e1) {
 	                   e1.printStackTrace();
@@ -231,7 +238,7 @@ public class VideoController {
 			// Receives GET requests to /video and returns the video associated with the id. 
 			// Note the the Servlet response is used to send the binary data back
 			@RequestMapping(value=VideoSvcApi.VIDEO_DATA_PATH, method=RequestMethod.GET)
-			public HttpServletResponse  getData(@PathVariable("id") long id, HttpServletResponse response)throws IOException
+			public HttpServletResponse  getVideoData(@PathVariable("id") long id, HttpServletResponse response)throws IOException
 			{
 				// look for video associated with the id
 				Video savedVideo = getVideoById(id, response);
@@ -293,6 +300,8 @@ public class VideoController {
 	     	// provided to us. 
 	     	
 	     	public void saveSomeVideo(Video v, MultipartFile videoData) throws IOException {
+	     		System.out.println("*********** v is "+v.getName());
+	     		System.out.println("*********** data is "+videoData.getName());
 	     	     videoDataMgr.saveVideoData(v, videoData.getInputStream());
 	     	}
 	     	

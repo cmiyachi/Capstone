@@ -5,12 +5,19 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
+import org.magnum.mobilecloud.video.repository.VideoStatus;
+import org.magnum.mobilecloud.video.repository.VideoStatus.VideoState;
 import org.magnum.mobilecloud.video.TestData;
 import org.magnum.mobilecloud.video.client.SecuredRestBuilder;
 import org.magnum.mobilecloud.video.client.VideoSvcApi;
@@ -21,6 +28,8 @@ import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 import retrofit.RetrofitError;
 import retrofit.client.ApacheClient;
+import retrofit.client.Response;
+import retrofit.mime.TypedFile;
 
 /**
  * A test for the Asgn2 video service
@@ -50,6 +59,17 @@ public class VideoSvcApiTest {
 	private final String USERNAME2 = "user0";
 	private final String PASSWORD = "pass";
 	private final String CLIENT_ID = "mobile";
+	
+	private File testVideoData2 = new File("src/test/resources/test.mp4");
+
+	private VideoSvcApi videoSvc = new SecuredRestBuilder()
+			.setLoginEndpoint(TEST_URL + VideoSvcApi.TOKEN_PATH)
+			.setUsername(USERNAME1)
+			.setPassword(PASSWORD)
+			.setClientId(CLIENT_ID)
+			.setClient(new ApacheClient(UnsafeHttpsClient.createUnsafeClient()))
+			.setEndpoint(TEST_URL).setLogLevel(LogLevel.FULL).build()
+			.create(VideoSvcApi.class);
 
 	private VideoSvcApi readWriteVideoSvcUser1 = new SecuredRestBuilder()
 			.setClient(new ApacheClient(UnsafeHttpsClient.createUnsafeClient()))
@@ -68,7 +88,55 @@ public class VideoSvcApiTest {
 			.build().create(VideoSvcApi.class);
 
 	private Video video = TestData.randomVideo();
+	private Video videoPicture = TestData.pictureVideo();
+	private File testPictureData = new File(
+			"src/test/resources/testphoto.jpg");
+	
+	@Test
+	public void testAddVideoData() throws Exception {
+		Video received = videoSvc.addVideo(videoPicture);
+		VideoStatus status = videoSvc.setVideoData(received.getId(),
+				new TypedFile("image/jpg", testPictureData));
+		assertEquals(VideoState.READY, status.getState());
 
+		Response response = videoSvc.getVideoData(received.getId());
+		assertEquals(200, response.getStatus());
+
+		InputStream videoData = response.getBody().in();
+		byte[] originalFile = IOUtils.toByteArray(new FileInputStream(
+				testPictureData));
+		byte[] retrievedFile = IOUtils.toByteArray(videoData);
+		
+		boolean result = false; 
+		int arr_len = originalFile.length;
+		for(int i = 0, j = 0, count = 0; count < arr_len; count++, i++, j++)
+		    if(originalFile[i] != retrievedFile[j])
+		    	result =  false;
+		    else
+		    	result = true;
+		assertTrue(result);
+		// assertTrue(Arrays.equals(originalFile, retrievedFile));
+	}
+	
+	
+/**
+
+	@Test
+	public void testAddVideoData() throws Exception {
+		Video received = readWriteVideoSvcUser1.addVideo(videoPicture);
+		VideoStatus status = readWriteVideoSvcUser1.setVideoData(received.getId(),
+				new TypedFile("image/jpg", testVideoData));
+		assertEquals(VideoState.READY, status.getState());
+		
+		Response response = readWriteVideoSvcUser1.getVideoData(received.getId());
+		assertEquals(200, response.getStatus());
+		
+		InputStream videoData = response.getBody().in();
+		byte[] originalFile = IOUtils.toByteArray(new FileInputStream(testVideoData));
+		byte[] retrievedFile = IOUtils.toByteArray(videoData);
+		assertTrue(Arrays.equals(originalFile, retrievedFile));
+	}
+	**/
 
 	@Test
 	public void testAddVideoMetadata() throws Exception {
@@ -81,8 +149,10 @@ public class VideoSvcApiTest {
 
 	@Test
 	public void testAddGetVideo() throws Exception {
-		readWriteVideoSvcUser1.addVideo(video);
+		Video updated_video = readWriteVideoSvcUser1.addVideo(video);
+		video.setId(updated_video.getId());
 		Collection<Video> stored = readWriteVideoSvcUser1.getVideoList();
+		
 		assertTrue(stored.contains(video));
 	}
 	

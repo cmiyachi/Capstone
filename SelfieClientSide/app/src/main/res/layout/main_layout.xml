@@ -21,7 +21,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="like"
+            android:text="Blur"
             android:id="@+id/button_like"
             android:layout_gravity="bottom"
             android:onClick="likeButton" />
@@ -29,7 +29,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="unlike"
+            android:text="Noise"
             android:id="@+id/button_unlike"
             android:layout_gravity="bottom"
             android:onClick="unlikeButton"
@@ -39,20 +39,30 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Up"
             android:id="@+id/button_upload"
             android:layout_gravity="bottom"
             android:onClick="uploadButton"
             />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:id="@+id/button_login"
-            android:singleLine="true"
-            android:onClick="onLoginButtonClicked" />
+            android:text="Down"
+            android:id="@+id/button_download"
+            android:layout_gravity="bottom"
+            android:onClick="downloadButton"
+            />
 
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/button_login"
+        android:singleLine="true"
+        android:onClick="onLoginButtonClicked"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

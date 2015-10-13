@@ -1,8 +1,15 @@
 package org.magnum.mobilecloud.video;
 
+import java.io.IOException;
+
+import javax.servlet.MultipartConfigElement;
+
 import org.magnum.mobilecloud.video.auth.OAuth2SecurityConfiguration;
+import org.magnum.mobilecloud.video.repository.VideoFileManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.embedded.MultiPartConfigFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -25,7 +32,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan
 @Import(OAuth2SecurityConfiguration.class)
 public class Application extends RepositoryRestMvcConfiguration {
-
+	private static final String MAX_REQUEST_SIZE = "150MB";
 	// The app now requires that you pass the location of the keystore and
 	// the password for your private key that you would like to setup HTTPS
 	// with. In Eclipse, you can set these options by going to:
@@ -46,7 +53,26 @@ public class Application extends RepositoryRestMvcConfiguration {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+/*
+	@Bean
+	public VideoFileManager videoFileManager() throws IOException {
+		return new VideoFileManager();
+	} */
 
+	// This configuration element adds the ability to accept multipart
+	// requests to the web container.
+	@Bean
+    public MultipartConfigElement multipartConfigElement() {
+		// Setup the application container to be accept multipart requests
+		final MultiPartConfigFactory factory = new MultiPartConfigFactory();
+		// Place upper bounds on the size of the requests to ensure that
+		// clients don't abuse the web container by sending huge requests
+		factory.setMaxFileSize(MAX_REQUEST_SIZE);
+		factory.setMaxRequestSize(MAX_REQUEST_SIZE);
+
+		// Return the configuration to setup multipart in the container
+		return factory.createMultipartConfig();
+	}
 	
 	
 }

@@ -1,5 +1,6 @@
 package org.magnum.mobilecloud.video;
 
+import java.io.File;
 import java.util.UUID;
 
 import org.magnum.mobilecloud.video.repository.Video;
@@ -21,6 +22,26 @@ public class TestData {
 
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 	
+	private static final String SERVER = "http://localhost:8080";
+
+	//private File testVideoData = new File(
+	//		"src/test/resources/test.mp4");
+	public File testVideoData = new File(
+			"src/test/resources/testphoto.jpg");
+	
+	// private Video video = Video.create().withContentType("video/mp4")
+	/*	private Video video = Video.create().withContentType("image/jpg")
+				.withDuration(123).withSubject(UUID.randomUUID().toString())
+				.withTitle(UUID.randomUUID().toString()).build(); **/
+	
+		public static Video pictureVideo ()
+		{
+			String id = UUID.randomUUID().toString();
+			String title = "Picture-"+id; 
+			long duration = 123; 
+			String url = "http://coursera.org/some/video-"+id;
+			return new Video(title, url, duration, 0); 
+		}
 	/**
 	 * Construct and return a Video object with a
 	 * rnadom name, url, and duration.

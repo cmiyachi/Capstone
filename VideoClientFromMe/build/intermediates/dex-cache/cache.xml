@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-f949439d54bf124fb62052c167b79bda73904e52.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\gson-2.2.4-cb2662d2c1d9fb1ade73afdb12a6b010e82a65ea.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-b4ced8f1fa905693aea70e571bdfa142672592b5.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\classes-7c4e9edd98ae3ca7632260b8e60e597b5375aed1.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\libs\com.fasterxml.jackson.annotations.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="adaa16df5f1ff56b40fb59362c83886f5413096c">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\com.fasterxml.jackson.annotations-045e5e147b8949380b9ebcb391604f7d22ff074f.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\libs\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-bd865b7628c022576e6b86c179f11228a20e7c17.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\libs\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoClientFromMe\app\build\intermediates\pre-dexed\debug\commons-io-2.4-ca604dc42a2344b5c9f38171f237fefe0c6733c9.jar" />
+    </item>
+
+</items>

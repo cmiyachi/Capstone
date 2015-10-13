@@ -26,7 +26,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import org.magnum.mobilecloud.video.repository.Video;
+import org.magnum.mobilecloud.video.repository.Video;;
 
 /**
  * This class provides a simple implementation to store video binary
@@ -38,20 +38,23 @@ import org.magnum.mobilecloud.video.repository.Video;
  */
 public class VideoFileManager {
 
-	private static final String DEFAULT_VIDEOS_FOLDER = "videos";
-	
-	private Path targetDir_;
-	
-	
-	public VideoFileManager() throws IOException{
-		this(DEFAULT_VIDEOS_FOLDER);
+	/**
+	 * This static factory method creates and returns a 
+	 * VideoFileManager object to the caller. Feel free to customize
+	 * this method to take parameters, etc. if you want.
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
+	public static VideoFileManager get() throws IOException {
+		return new VideoFileManager();
 	}
+	
+	private Path targetDir_ = Paths.get("videos");
 	
 	// The VideoFileManager.get() method should be used
 	// to obtain an instance
-	public VideoFileManager(String dir) throws IOException{
-		targetDir_ = Paths.get(dir);
-		
+	private VideoFileManager() throws IOException{
 		if(!Files.exists(targetDir_)){
 			Files.createDirectories(targetDir_);
 		}

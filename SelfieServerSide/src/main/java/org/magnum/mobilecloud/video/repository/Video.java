@@ -117,7 +117,7 @@ public class Video {
 			Video other = (Video) obj;
 			// Google Guava provides great utilities for equals too!
 			return Objects.equal(name, other.name)
-					&& Objects.equal(url, other.url)
+					/**&& Objects.equal(url, other.url) **/
 					&& duration == other.duration;
 		} else {
 			return false;
