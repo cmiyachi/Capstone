@@ -15,9 +15,28 @@ import retrofit.mime.TypedFile;
 public interface VideoSvcApi {
 
 
+    public class VideoStatus {
+
+        public enum VideoState {
+            READY, PROCESSING
+        }
+
+        private VideoState state;
+
+        public VideoStatus(VideoState state) {
+            super();
+            this.state = state;
+        }
+
+
+    }
+
+
     String TOKEN_PATH = "/oauth/token";
 
     String VIDEO_SVC_PATH = "/video";
+
+    String VIDEO_DATA_PATH = "/video/id/data";
 
     @GET(VIDEO_SVC_PATH)
     Collection<Video> getVideoList();
@@ -37,5 +56,7 @@ public interface VideoSvcApi {
     @GET(VIDEO_SVC_PATH + "/{id}/liked")
     Collection<String> getUsersWhoLikedVideo(@Path("id") long id);
 
-
+    @Multipart
+    @POST(VIDEO_DATA_PATH)
+    VideoStatus setVideoData(@Path("id") long id, @Part("data") TypedFile videoData);
 }

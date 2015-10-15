@@ -145,6 +145,34 @@ public class VideoOpsFragment extends Fragment {
 
     }
 
+    public void addVideoData (final Video video) {
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                try {
+                    mVideoSvcApi.addVideo(video);
+                } catch (Exception e) {
+                    toastError(e.getMessage());
+                }
+
+
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                getAvailableVideos();
+            }
+        }.execute();
+
+
+
+
+
+
+    }
+
 
     public void getAvailableVideos() {
 

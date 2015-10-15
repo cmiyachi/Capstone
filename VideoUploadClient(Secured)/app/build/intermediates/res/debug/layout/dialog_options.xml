@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/videoOptions"
+  android:orientation="horizontal"
+  android:padding="15dp"
+  android:descendantFocusability="blocksDescendants"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+ 
+
+    <Button android:text="Like"
+        android:id="@+id/BtnLike"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:onClick="myLikeHandler">
+    </Button>
+    <Button android:text="Unlike"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:onClick="myUnLikeHandler">
+    </Button>
+    <Button android:text="UsersLiked"
+        android:id="@+id/BtnUsersLiked"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:onClick="myUsersLikeHandler">
+    </Button>
+</LinearLayout>
+<!-- From: file:/C:/Users/chrisyogini/Documents/Capstone/VideoUploadClient(Secured)/app/src/main/res/layout/dialog_options.xml -->

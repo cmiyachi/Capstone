@@ -5,7 +5,10 @@ import android.app.FragmentManager;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,15 +17,21 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static vandy.mooc.videoapp.VideoOpsFragment.*;
+
 
 
 public class MainActivity extends ListActivity {
     VideoOpsFragment mVideoOpsFragment;
     private int selectedListItem = -1;
     ArrayAdapter<Video> adapter;
+
 
 
     @Override
@@ -100,6 +109,9 @@ public class MainActivity extends ListActivity {
           mVideoOpsFragment.unlikeVideo(video);
         }
     }
+
+
+
 }
 
 
