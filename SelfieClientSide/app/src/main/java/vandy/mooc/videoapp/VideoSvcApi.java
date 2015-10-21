@@ -36,7 +36,10 @@ public interface VideoSvcApi {
 
     String VIDEO_SVC_PATH = "/video";
 
-    String VIDEO_DATA_PATH = "/video/id/data";
+    public static final String DATA_PARAMETER = "data";
+    public static final String ID_PARAMETER = "id";
+    // The path where we expect the VideoSvc to live
+    public static final String VIDEO_DATA_PATH = VIDEO_SVC_PATH + "/{"+VideoSvcApi.ID_PARAMETER+"}/data";
 
     @GET(VIDEO_SVC_PATH)
     Collection<Video> getVideoList();
@@ -56,7 +59,8 @@ public interface VideoSvcApi {
     @GET(VIDEO_SVC_PATH + "/{id}/liked")
     Collection<String> getUsersWhoLikedVideo(@Path("id") long id);
 
+
     @Multipart
     @POST(VIDEO_DATA_PATH)
-    VideoStatus setVideoData(@Path("id") long id, @Part("data") TypedFile videoData);
+    public VideoStatus setVideoData(@Path(ID_PARAMETER) long id, @Part(DATA_PARAMETER) TypedFile videoData);
 }

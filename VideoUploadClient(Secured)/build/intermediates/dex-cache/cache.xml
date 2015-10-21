@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\okio-1.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\okio-1.4.0-0539106ee87bff66df90461d0522044790f3967e.jar" />
-    </item>
-    <item
         jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\okhttp-2.4.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="40340c0748190fe897baf7bffbc1b282734294e5">
         <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\okhttp-2.4.0-dc5da24014ef3362fd3fe4adf33b5e78c78e5d06.jar" />
-    </item>
-    <item
-        jar="C:\Users\chrisyogini\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-76bb6d1c8283a228bc3ef97dd72fcd91ad6c2dbb.jar" />
-    </item>
-    <item
-        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\classes-fc5cb8b532813f0cefed48097cab948a17204aa3.jar" />
-    </item>
-    <item
-        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="cce0823396aa693798f8882e64213b1772032b09">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\guava-18.0-656648deb444207d1c91478bfa007138a16b2d37.jar" />
-    </item>
-    <item
-        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\com.fasterxml.jackson.annotations.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="adaa16df5f1ff56b40fb59362c83886f5413096c">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\com.fasterxml.jackson.annotations-1a7a83a6afb61cd1bfbd402610241b88f2f90c62.jar" />
     </item>
     <item
         jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
@@ -51,18 +16,32 @@
         <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-a14bb3e96c5431ac2f5ba335338a342af4c7b13e.jar" />
     </item>
     <item
-        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jar="C:\Users\chrisyogini\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\gson-2.2.4-cb2662d2c1d9fb1ade73afdb12a6b010e82a65ea.jar" />
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-76bb6d1c8283a228bc3ef97dd72fcd91ad6c2dbb.jar" />
     </item>
     <item
-        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\commons-io-2.4.jar"
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\okio-1.4.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
-        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\commons-io-2.4-93d591a056961d406cf993f879f1f1c249227ea6.jar" />
+        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\okio-1.4.0-0539106ee87bff66df90461d0522044790f3967e.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\com.fasterxml.jackson.annotations.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="adaa16df5f1ff56b40fb59362c83886f5413096c">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\com.fasterxml.jackson.annotations-1a7a83a6afb61cd1bfbd402610241b88f2f90c62.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\classes-fc5cb8b532813f0cefed48097cab948a17204aa3.jar" />
     </item>
     <item
         jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\retrofit-1.9.0.jar"
@@ -70,6 +49,27 @@
         revision="22.0.1"
         sha1="a681c044244d9fc375198588297a39ba78028423">
         <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-f440ef00c88b4e2dc87ef767e1ca3becb7751acb.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\gson-2.2.4-cb2662d2c1d9fb1ade73afdb12a6b010e82a65ea.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\18.0\cce0823396aa693798f8882e64213b1772032b09\guava-18.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\guava-18.0-656648deb444207d1c91478bfa007138a16b2d37.jar" />
+    </item>
+    <item
+        jar="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\libs\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\chrisyogini\Documents\Capstone\VideoUploadClient(Secured)\app\build\intermediates\pre-dexed\debug\commons-io-2.4-93d591a056961d406cf993f879f1f1c249227ea6.jar" />
     </item>
 
 </items>

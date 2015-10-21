@@ -2,6 +2,7 @@ package vandy.mooc.utils;
 
 import java.io.File;
 
+import vandy.mooc.common.Utils;
 import vandy.mooc.model.mediator.webdata.Video;
 import android.content.ContentUris;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 
 /**
  * VideoMediaStoreUtils contains helper methods to access
@@ -47,10 +49,10 @@ public class VideoMediaStoreUtils {
             new File(filePath).getName();
         
         //Get the duration of the Video.
-        final long duration = 
-            Long.parseLong
+        final long duration = 10;
+           /* Long.parseLong
             (retriever.extractMetadata
-             (MediaMetadataRetriever.METADATA_KEY_DURATION));
+             (MediaMetadataRetriever.METADATA_KEY_DURATION)); */
   
        
         // Create a new Video containing the meta-data.
@@ -74,11 +76,15 @@ public class VideoMediaStoreUtils {
         // than API 19 (KitKat).
         final boolean isKitKat =
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-     
+
+        if (uri == null)
+        {
+            Utils.showToast(context,"The uri is null");
+            Log.d("getPath", "uri is null ******************");
+            return null;
+        }
         // DocumentProvider.
-        if (isKitKat
-            && DocumentsContract.isDocumentUri(context,
-                                               uri)) {
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
             // ExternalStorageProvider 
             if (isExternalStorageDocument(uri)) {
                 final String docId =
@@ -115,8 +121,8 @@ public class VideoMediaStoreUtils {
                 final String[] split =
                     docId.split(":");
                 
-                final Uri contentUri = 
-                    MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                final Uri contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                //    MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
                
                 final String selection = "_id = ?";
                 final String[] selectionArgs = new String[] {
@@ -134,9 +140,9 @@ public class VideoMediaStoreUtils {
         // MediaStore (and general) .
         else if ("content".equalsIgnoreCase(uri.getScheme())) 
             return getVideoDataColumn(context,
-                                      uri,
-                                      null,
-                                      null);
+                    uri,
+                    null,
+                    null);
         // File 
         else if ("file".equalsIgnoreCase(uri.getScheme())) 
             return uri.getPath();
@@ -160,7 +166,8 @@ public class VideoMediaStoreUtils {
                                              String[] selectionArgs) {
         // Projection used to query Android Video Content Provider.
         final String[] projection = {
-            MediaStore.Video.Media.DATA
+           // MediaStore.Video.Media.DATA
+                MediaStore.Images.Media.DATA
         }; 
      
         //Query and get a cursor to Android Video
@@ -175,7 +182,7 @@ public class VideoMediaStoreUtils {
                 if (cursor != null 
                     && cursor.moveToFirst()) 
                     return cursor.getString(cursor.getColumnIndexOrThrow
-                                            (MediaStore.Video.Media.DATA));
+                                            (MediaStore.Images.Media.DATA));
             } 
 
         // No video present. returns null.

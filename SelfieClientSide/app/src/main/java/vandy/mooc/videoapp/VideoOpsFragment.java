@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
+import retrofit.mime.TypedFile;
 
 public class VideoOpsFragment extends Fragment {
 
@@ -122,9 +123,9 @@ public class VideoOpsFragment extends Fragment {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-
+                Video v = new Video();
                 try {
-                    mVideoSvcApi.addVideo(video);
+                   v = mVideoSvcApi.addVideo(video);
                 } catch (Exception e) {
                     toastError(e.getMessage());
                 }
@@ -132,10 +133,12 @@ public class VideoOpsFragment extends Fragment {
 
                 return null;
             }
+            /**
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
             }
+            **/
         }.execute();
 
 
@@ -145,16 +148,17 @@ public class VideoOpsFragment extends Fragment {
 
     }
 
-    public void addVideoData (final Video video) {
+    public void setVideoData (final long id, final TypedFile f) {
 
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
 
                 try {
-                    mVideoSvcApi.addVideo(video);
+                    mVideoSvcApi.setVideoData(id, f);
                 } catch (Exception e) {
                     toastError(e.getMessage());
+                    Log.d("Exception&&&&&",e.getMessage());
                 }
 
 

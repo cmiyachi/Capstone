@@ -162,19 +162,19 @@ public class VideoListActivity
         // get Video from Gallery.
         final Intent videoGalleryIntent =
             new Intent(Intent.ACTION_GET_CONTENT)
-                  .setType("video/*")
+                  .setType("image/*")
                   .putExtra(Intent.EXTRA_LOCAL_ONLY, true);
         
         // Create an intent that will start an Activity to
         // Record the Video.
         final Intent recordVideoIntent =
-            new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         // Intent that wraps the given target Intent and
         // shows a chooser dialog to show the Apps that 
         // can handle the target Intent.
         final Intent chooserIntent =
-            Intent.createChooser(videoGalleryIntent, "Upload Video via");
+            Intent.createChooser(videoGalleryIntent, "Upload Image via");
 
         // Add RecordVideo Intent, so that App that can
         // record video is added to the chooser dialog.

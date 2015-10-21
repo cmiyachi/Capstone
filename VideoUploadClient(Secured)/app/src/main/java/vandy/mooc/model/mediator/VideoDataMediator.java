@@ -19,6 +19,7 @@ import vandy.mooc.model.mediator.webdata.VideoStatus.VideoState;
 import vandy.mooc.model.mediator.webdata.VideoSvcApi;
 import vandy.mooc.utils.Constants;
 import vandy.mooc.utils.VideoMediaStoreUtils;
+import vandy.mooc.utils.VideoStorageUtils;
 import vandy.mooc.view.SettingsActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -39,7 +40,8 @@ public class VideoDataMediator {
      */
     public static final String STATUS_UPLOAD_SUCCESSFUL =
         "Upload succeeded";
-    
+    public static final String STATUS_DOWNLOAD_SUCCESSFUL =
+            "Download succeeded";
     /**
      * Status code to indicate that file upload failed 
      * due to large video size.
@@ -52,7 +54,8 @@ public class VideoDataMediator {
      */
     public static final String STATUS_UPLOAD_ERROR =
         "Upload failed";
-    
+    public static final String STATUS_DOWNLOAD_ERROR =
+            "Download failed";
     /**
      * Defines methods that communicate with the Video Service.
      */
@@ -115,11 +118,10 @@ public class VideoDataMediator {
     
 
     /**
-     * Uploads the Video having the given Id.  This Id is the Id of
-     * Video in Android Video Content Provider.
+     * Uploads the Video having a URI.
      * 
-     * @param videoId
-     *            Id of the Video to be uploaded.
+     * @param  context
+     *            URI
      *
      * @return A String indicating the status of the video upload operation.
      */
@@ -132,9 +134,11 @@ public class VideoDataMediator {
 
         // Get the Video from Android Video Content Provider having
         // the given filePath.
-        Video androidVideo =
-            VideoMediaStoreUtils.getVideo(context,
-                                          filePath);
+
+        Video androidVideo = null;
+        if (filePath != null)
+            VideoMediaStoreUtils.getVideo(context, filePath);
+
 
         // Check if any such Video exists in Android Video Content
         // Provider.
@@ -164,7 +168,7 @@ public class VideoDataMediator {
                         VideoStatus status =
                             mVideoServiceProxy.setVideoData
                                 (receivedVideo.getId(),
-                                 new TypedFile("video/mpeg", videoFile));
+                                 new TypedFile("image/jpg", videoFile));
 
                         // Check if the Status of the Video or not.
                         if (status.getState() == VideoState.READY) {
@@ -185,6 +189,31 @@ public class VideoDataMediator {
         return STATUS_UPLOAD_ERROR;
     }
 
+    /**
+     * Downloads the Video having the given Id.  This Id is the Id of
+     * Video in Android Video Content Provider.
+     *
+     * @param videoId
+     *            Id of the Video to be uploaded.
+     *
+     * @return A String indicating the status of the video upload operation.
+     */
+    public String downloadVideo(Context context, long videoId,
+                                String videoName)  {
+
+        Response response  =
+                mVideoServiceProxy.getVideoData(videoId);
+
+        // Check if the Video Service returned success.
+        if (response.getStatus() == 200) {
+            File file = VideoStorageUtils.storeVideoInExternalDirectory(context, response, videoName);
+
+            // Video successfully downloaded .
+            return STATUS_DOWNLOAD_SUCCESSFUL;
+        } else
+            // Video couldn't be downloaded.
+            return STATUS_DOWNLOAD_ERROR;
+    }
     /**
      * Get the List of Videos from Video Service.
      *

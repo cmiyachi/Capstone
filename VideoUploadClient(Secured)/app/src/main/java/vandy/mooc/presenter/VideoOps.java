@@ -10,6 +10,7 @@ import vandy.mooc.common.GenericAsyncTaskOps;
 import vandy.mooc.common.Utils;
 import vandy.mooc.model.mediator.VideoDataMediator;
 import vandy.mooc.model.mediator.webdata.Video;
+import vandy.mooc.model.services.DownloadVideoService;
 import vandy.mooc.model.services.UploadVideoService;
 import vandy.mooc.view.ui.VideoAdapter;
 import android.net.Uri;
@@ -126,7 +127,7 @@ public class VideoOps
     /**
      * Start a service that Uploads the Video having given Id.
      *   
-     * @param videoId
+     * @param videoUri
      */
     public void uploadVideo(Uri videoUri){
         // Sends an Intent command to the UploadVideoService.
@@ -136,6 +137,20 @@ public class VideoOps
                                 videoUri));
     }
 
+
+    /**
+     * Start a service that Downloads the Video having given Id.
+     *
+     * @param videoId
+     */
+    public void downloadVideo(long videoId, String videoName){
+        // Sends an Intent command to the DownloadVideoService.
+        mVideoView.get().getApplicationContext().startService
+                (DownloadVideoService.makeIntent
+                        (mVideoView.get().getApplicationContext(),
+                                videoId, videoName));
+
+    }
     /**
      * Gets the VideoList from Server by executing the AsyncTask to
      * expand the acronym without blocking the caller.
