@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
+import retrofit.client.Response;
 import retrofit.mime.TypedFile;
 
 public class VideoOpsFragment extends Fragment {
@@ -19,7 +21,24 @@ public class VideoOpsFragment extends Fragment {
 
     static VideoOpsFragment instance;
     public static final String TAG = "VideoOps";
+    public static final String STATUS_UPLOAD_SUCCESSFUL =
+            "Upload succeeded";
+    public static final String STATUS_DOWNLOAD_SUCCESSFUL =
+            "Download succeeded";
+    /**
+     * Status code to indicate that file upload failed
+     * due to large video size.
+     */
+    public static final String STATUS_UPLOAD_ERROR_FILE_TOO_LARGE =
+            "Upload failed: File too big";
 
+    /**
+     * Status code to indicate that file upload failed.
+     */
+    public static final String STATUS_UPLOAD_ERROR =
+            "Upload failed";
+    public static final String STATUS_DOWNLOAD_ERROR =
+            "Download failed";
 
     Set<Video> videos = new HashSet<Video>();
     WeakReference<MainActivity> mActivity;
@@ -128,6 +147,7 @@ public class VideoOpsFragment extends Fragment {
                    v = mVideoSvcApi.addVideo(video);
                 } catch (Exception e) {
                     toastError(e.getMessage());
+                    Log.d("Ex from Add Video", e.getMessage());
                 }
 
 
@@ -158,7 +178,40 @@ public class VideoOpsFragment extends Fragment {
                     mVideoSvcApi.setVideoData(id, f);
                 } catch (Exception e) {
                     toastError(e.getMessage());
-                    Log.d("Exception&&&&&",e.getMessage());
+                    Log.d("Exception&&&&&", e.getMessage());
+                }
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                getAvailableVideos();
+            }
+        }.execute();
+    }
+
+    public void getVideoData (final long id, final String videoName) {
+
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+
+                try {
+                    Response response=  mVideoSvcApi.getVideoData(id);
+                    // Check if the Video Service returned success.
+                    if (response.getStatus() == 200) {
+                        File file = VideoStorageUtils.storeVideoInExternalDirectory(mActivity.get().adapter.getContext(), response, videoName);
+
+                        // Video successfully downloaded .
+                        Log.d(TAG,STATUS_DOWNLOAD_SUCCESSFUL);
+                    } else
+                        // Video couldn't be downloaded.
+                        Log.d(TAG,STATUS_DOWNLOAD_ERROR);
+                } catch (Exception e) {
+                    toastError(e.getMessage());
+                    Log.d("Ex for getting data ",e.getMessage());
                 }
 
 
@@ -169,8 +222,6 @@ public class VideoOpsFragment extends Fragment {
                 getAvailableVideos();
             }
         }.execute();
-
-
 
 
 
@@ -211,6 +262,7 @@ public class VideoOpsFragment extends Fragment {
         mActivity.get().adapter.clear();
         mActivity.get().adapter.addAll(videos);
         mActivity.get().adapter.notifyDataSetChanged();
+        mActivity.get().adapter.getContext();
 
         mActivity.get().runOnUiThread(new Runnable() {
             @Override

@@ -109,6 +109,18 @@ public class MainActivity extends ListActivity {
         dispatchTakePictureIntent();
     }
 
+    public void downloadButton(View view) {
+        if (selectedListItem == -1) {
+            Toast.makeText(this, "No video selected", Toast.LENGTH_SHORT).show();
+        } else {
+
+            Video video = (Video) getListAdapter().getItem(selectedListItem);
+            mVideoOpsFragment.getVideoData(video.getId(), video.getName());
+
+
+        }
+    }
+
 
     public void unlikeButton(View view) {
         if (selectedListItem == -1)
@@ -188,7 +200,7 @@ public class MainActivity extends ListActivity {
             String self_no = Long.toString(selfie_no);
             Video v = new Video(selfieName+self_no,0, photoFile.getPath());
             v.setId(selfie_no);
-            mVideoOpsFragment.addVideo(v);
+           // mVideoOpsFragment.addVideo(v);
             mVideoOpsFragment.setVideoData(v.getId(), new TypedFile("image/jpg", photoFile));
 
         }

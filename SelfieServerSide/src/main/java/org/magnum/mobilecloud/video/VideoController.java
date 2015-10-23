@@ -47,12 +47,15 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
 @Controller
 public class VideoController {
 	// Note: storage for video ratings,
 	//	where key is video id and value list of users voted
 	//  for the video
 	HashMap<Long, List<String>> m_videoRatings;
+	private long number = 1; 
 	
 	@Autowired
 	private VideoRepository m_videoRepository;
@@ -90,6 +93,7 @@ public class VideoController {
 		video.setOwner(principal.getName());
 		video.setLikes(0);
 		
+		System.out.println("I'm adding a video ************************");
 		
 		// Note: let's check the existence of the video and the owner
 		Video savedVideo = m_videoRepository.findById(video.getId());
@@ -209,9 +213,23 @@ public class VideoController {
 			// of the video.  This video is stored using existing code with the Video Manager.
 			// The return is converted to JSON by Spring because of the @ResponseBody
 			@RequestMapping(value=VideoSvcApi.VIDEO_DATA_PATH, method=RequestMethod.POST)
-			public  @ResponseBody VideoStatus setVideoData(@PathVariable("id") long id, @RequestParam("data") MultipartFile data,  HttpServletResponse response)
+			public  @ResponseBody VideoStatus setVideoData(@PathVariable("id") long id, @RequestParam("data") MultipartFile data,  Principal principal, HttpServletResponse response)
 			{
+				
 				System.out.println("inside setting video data ************************");
+				Video video = new Video();
+				// Note: set up owner and like properties
+				video.setOwner(principal.getName());
+				video.setLikes(0);
+				video.setName("Video"+Long.toString(number++));
+				System.out.println("I'm adding a video ************************");
+				
+				
+				Video return_video = save(video);  // sets the URL when it saves it
+
+
+				
+				
 				Video savedVideo = getVideoById(id, response);
 				if (savedVideo == null) {
 					return null;
@@ -240,6 +258,7 @@ public class VideoController {
 			@RequestMapping(value=VideoSvcApi.VIDEO_DATA_PATH, method=RequestMethod.GET)
 			public HttpServletResponse  getVideoData(@PathVariable("id") long id, HttpServletResponse response)throws IOException
 			{
+				videoDataMgr = VideoFileManager.get();
 				// look for video associated with the id
 				Video savedVideo = getVideoById(id, response);
 				if (savedVideo == null) {

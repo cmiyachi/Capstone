@@ -63,4 +63,8 @@ public interface VideoSvcApi {
     @Multipart
     @POST(VIDEO_DATA_PATH)
     public VideoStatus setVideoData(@Path(ID_PARAMETER) long id, @Part(DATA_PARAMETER) TypedFile videoData);
+
+    @Streaming
+    @GET(VIDEO_DATA_PATH)
+    Response getVideoData(@Path(ID_PARAMETER) long id);
 }
