@@ -97,6 +97,15 @@ public class VideoFileManager {
 		Files.copy(source, out);
 	}
 	
+	public String getFilePath(Video v)  {
+		String filename ="";
+		Path source = getVideoPath(v);
+		filename = source.getFileName().toString();
+		
+		return filename; 
+		
+	}
+	
 	/**
 	 * This method reads all of the data in the provided InputStream and stores
 	 * it on the file system. The data is associated with the Video object that

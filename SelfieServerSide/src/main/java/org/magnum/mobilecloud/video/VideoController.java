@@ -47,7 +47,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import marvin.gui.MarvinImagePanel;
+import marvin.image.MarvinImage;
+import marvin.image.MarvinImageMask;
+import marvin.io.MarvinImageIO;
+import marvin.plugin.MarvinImagePlugin;
+import marvin.util.MarvinPluginLoader;
 
 @Controller
 public class VideoController {
@@ -120,7 +125,11 @@ public class VideoController {
 		if (savedVideo == null) {
 			return null;
 		}
+		String filepath = videoDataMgr.getFilePath(savedVideo); 
+		System.out.println("FilePath ************************" +filepath);
+		System.out.flush();
 		
+		/**
 		if (!doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() + 1);
 			m_videoRatings.get(savedVideo.getId()).add(principal.getName());
@@ -135,7 +144,7 @@ public class VideoController {
 				e.printStackTrace();
 			}
 		}
-		
+		**/
 		return null;
 		
 	}
@@ -146,7 +155,9 @@ public class VideoController {
 		if (savedVideo == null) {
 			return null;
 		}
-		
+		String filepath = videoDataMgr.getFilePath(savedVideo); 
+		System.out.println("FilePath ************************" +filepath);
+		/**
 		if (doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() - 1);
 			m_videoRatings.get(savedVideo.getId()).remove(principal.getName());
@@ -161,7 +172,7 @@ public class VideoController {
 				e.printStackTrace();
 			}
 		}
-		
+		**/
 		return null;
 	}
 	
@@ -221,7 +232,7 @@ public class VideoController {
 				// Note: set up owner and like properties
 				video.setOwner(principal.getName());
 				video.setLikes(0);
-				video.setName("Video"+Long.toString(number++));
+				video.setName("Selfie"+Long.toString(number++)+".jpg");
 				System.out.println("I'm adding a video ************************");
 				
 				
