@@ -47,7 +47,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import marvin.gui.MarvinImagePanel;
+import marvin.image.MarvinImage;
+import marvin.image.MarvinImageMask;
+import marvin.io.MarvinImageIO;
+import marvin.plugin.MarvinImagePlugin;
+import marvin.util.MarvinPluginLoader;
 
 @Controller
 public class VideoController {
@@ -56,6 +61,11 @@ public class VideoController {
 	//  for the video
 	HashMap<Long, List<String>> m_videoRatings;
 	private long number = 1; 
+	
+	
+	// using the Marvin image processing library here 
+	private MarvinImage image;
+	private MarvinImagePlugin 	imagePlugin;
 	
 	@Autowired
 	private VideoRepository m_videoRepository;
@@ -124,8 +134,12 @@ public class VideoController {
 		
 		String filepath = videoDataMgr.getFilePath(savedVideo); 
 		System.out.println("FilePath ************************" +filepath);
-		
-		
+		image = MarvinImageIO.loadImage("./videos/"+filepath);
+		imagePlugin = MarvinPluginLoader.loadImagePlugin("org.marvinproject.image.color.grayScale.jar");
+		imagePlugin.process(image, image);
+		image.update();
+		MarvinImageIO.saveImage(image, "./videos/"+filepath);
+
 		if (!doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() + 1);
 			m_videoRatings.get(savedVideo.getId()).add(principal.getName());
@@ -151,6 +165,15 @@ public class VideoController {
 		if (savedVideo == null) {
 			return null;
 		}
+		
+
+		String filepath = videoDataMgr.getFilePath(savedVideo); 
+		System.out.println("FilePath ************************" +filepath);
+		image = MarvinImageIO.loadImage("./videos/"+filepath);
+		imagePlugin = MarvinPluginLoader.loadImagePlugin("org.marvinproject.image.color.invert.jar");
+		imagePlugin.process(image, image);
+		image.update();
+		MarvinImageIO.saveImage(image, "./videos/"+filepath);
 		
 		if (doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() - 1);
