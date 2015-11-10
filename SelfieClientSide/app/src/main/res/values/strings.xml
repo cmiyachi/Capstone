@@ -3,5 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="error">Some error</string>
-
+    <string name="action_disable_alarm">Disable alarms</string>
+    <string name="action_enable_alarm">Enable alarms</string>
 </resources>

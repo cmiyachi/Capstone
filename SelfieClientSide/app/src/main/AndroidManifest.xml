@@ -32,7 +32,9 @@
             android:name=".NewVideoActivity"
              >
         </activity>
-
+        <receiver android:name="vandy.mooc.videoapp.AlarmReceiver"></receiver>
+        <activity
+            android:name="vandy.mooc.videoapp.FullScreenActivity" />
     </application>
 
 </manifest>

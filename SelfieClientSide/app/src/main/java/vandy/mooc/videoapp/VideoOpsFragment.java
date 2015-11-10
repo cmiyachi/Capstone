@@ -176,6 +176,7 @@ public class VideoOpsFragment extends Fragment {
 
                 try {
                     mVideoSvcApi.setVideoData(id, f);
+                   // Toast.makeText(mActivity.get().getBaseContext(), "Video Uploading", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     toastError(e.getMessage());
                     Log.d("Exception&&&&&", e.getMessage());
@@ -188,6 +189,7 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
+                Toast.makeText(mActivity.get().getBaseContext(), "Video Upload Complete", Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }
@@ -203,7 +205,11 @@ public class VideoOpsFragment extends Fragment {
                     // Check if the Video Service returned success.
                     if (response.getStatus() == 200) {
                         File file = VideoStorageUtils.storeVideoInExternalDirectory(mActivity.get().adapter.getContext(), response, videoName);
-
+                        Intent intent = new Intent(mActivity.get().getBaseContext(),FullScreenActivity.class);
+                        intent.putExtra(FullScreenActivity.EXTRA_NAME,videoName);
+                        intent.putExtra(FullScreenActivity.EXTRA_PATH,file.getAbsolutePath());
+                        Log.i(TAG, "opening fullscreen activity");
+                        startActivity(intent);
                         // Video successfully downloaded .
                         Log.d(TAG,STATUS_DOWNLOAD_SUCCESSFUL);
                     } else
@@ -220,6 +226,8 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
+                Toast.makeText(mActivity.get().getBaseContext(), "Video Download Complete", Toast.LENGTH_SHORT).show();
+
             }
         }.execute();
 

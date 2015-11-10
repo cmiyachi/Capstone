@@ -1,15 +1,22 @@
 package vandy.mooc.videoapp;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.FragmentManager;
 import android.app.ListActivity;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -30,6 +37,18 @@ import static vandy.mooc.videoapp.VideoOpsFragment.*;
 
 
 public class MainActivity extends ListActivity {
+
+    // items related to the alarm to take a selfie
+    private static final int REQUEST_TAKE_PHOTO = 0;
+
+    private static final long INITIAL_DELAY = 2*60; //*1000;
+    private static final long REPEAT_DELAY = 2*60; //*1000;
+
+    private static final String ALARM_KEY = "alarms";
+    private static final String SELFIE_KEY = "selfiePath";
+    private PendingIntent mAlarmOperation;
+    private SharedPreferences mSharedPreferences;
+
     VideoOpsFragment mVideoOpsFragment;
     private int selectedListItem = -1;
     ArrayAdapter<Video> adapter;
@@ -55,7 +74,9 @@ public class MainActivity extends ListActivity {
         setListAdapter(adapter);
         startActivity(new Intent(this, LoginActivity.class));
 
+        mSharedPreferences = getSharedPreferences("selfie", Context.MODE_PRIVATE);
 
+        setAlarm(null,false);
     }
 
 
@@ -209,7 +230,75 @@ public class MainActivity extends ListActivity {
             photoFile.delete();
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.selfie_list, menu);
 
+        MenuItem item = menu.findItem(R.id.action_alarm);
+        //Setting the original enable/disable value for alarms
+        setAlarm(item, false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.action_alarm) {
+            Log.d(TAG,"click on toggle alarm");
+            setAlarm(item,true);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    /**
+     * Triggers the alarm if needed.
+     * Also set the correct label for the item if provided.
+     * Also toggle the alarm setting if requested
+     * @param item the menu item to edit the label
+     * @param toggle if the alarm parameter needs to be toggled
+     */
+    protected void setAlarm(MenuItem item,boolean toggle) {
+        //Setting the alarm
+        if (mAlarmOperation == null) {
+            Log.d(TAG,"initiating alarm operation");
+            mAlarmOperation = PendingIntent.getBroadcast(
+                    getApplicationContext(),
+                    0,
+                    new Intent(getApplicationContext(),AlarmReceiver.class),
+                    0);
+        }
+
+        boolean alarmEnabled = mSharedPreferences.getBoolean(ALARM_KEY, true);
+        if (toggle) {
+            Log.d(TAG,"requesting alarm toggle");
+            alarmEnabled = !alarmEnabled;
+            mSharedPreferences.edit().putBoolean(ALARM_KEY, alarmEnabled).commit();
+        }
+
+        AlarmManager alarm = (AlarmManager) getSystemService(Service.ALARM_SERVICE);
+        if (alarmEnabled) {
+            Log.i(TAG,"programming alarm");
+            alarm.setRepeating(
+                    AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    SystemClock.elapsedRealtime()+INITIAL_DELAY,
+                    REPEAT_DELAY, mAlarmOperation);
+        } else {
+            Log.i(TAG,"alarm disabled, canceling");
+            alarm.cancel(mAlarmOperation);
+        }
+
+        if (item != null) {
+            if (alarmEnabled)
+                item.setTitle(R.string.action_disable_alarm);
+            else
+                item.setTitle(R.string.action_enable_alarm);
+        }
+    }
 
 }
 

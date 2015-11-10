@@ -21,7 +21,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blur"
+            android:text="Gray"
             android:id="@+id/button_like"
             android:layout_gravity="bottom"
             android:onClick="likeButton" />
@@ -29,7 +29,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Noise"
+            android:text="Invert"
             android:id="@+id/button_unlike"
             android:layout_gravity="bottom"
             android:onClick="unlikeButton"

@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+     >
+
+
+    <item
+        android:id="@+id/action_alarm"
+        android:title="@string/action_disable_alarm"
+        />
+    <item
+        android:id="@+id/action_alarm_on"
+        android:title="@string/action_enable_alarm"
+        />
+
+</menu>

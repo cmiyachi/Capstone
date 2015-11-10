@@ -1,4 +1,4 @@
-package fr.clouddev.dailyselfie;
+package vandy.mooc.videoapp;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
 /**
  * A Receiver triggered when the alarm goes off.
  * It only creates the notification to reopen the selfie list.
@@ -21,12 +22,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Log.i(TAG,"received intent broadcast from alarm");
+		Log.i(TAG, "received intent broadcast from alarm");
 		PendingIntent pendingIntent = PendingIntent.getActivity(
-				context.getApplicationContext(), 
-				0, 
-				new Intent(context.getApplicationContext(),SelfieListActivity.class), Intent.FLAG_ACTIVITY_NEW_TASK);
-				// Intent.FLAG_ACTIVITY_NEW_TASK );
+				context.getApplicationContext(),
+				0,
+				new Intent(context.getApplicationContext(), MainActivity.class),
+				Intent.FLAG_ACTIVITY_NEW_TASK);
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Service.NOTIFICATION_SERVICE);
 		Notification notification = new Notification.Builder(context.getApplicationContext())
 			.setContentTitle("Selfie")
