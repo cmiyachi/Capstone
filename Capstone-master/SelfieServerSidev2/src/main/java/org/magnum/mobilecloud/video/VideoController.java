@@ -139,7 +139,18 @@ public class VideoController {
 		imagePlugin.process(image, image);
 		image.update();
 		MarvinImageIO.saveImage(image, "./videos/"+filepath);
-
+		
+		// does this user own the selfie?  If not, return a bad request
+		String this_owner = savedVideo.getOwner();
+		if (this_owner != principal.getName())
+		{
+			try {
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+/**
 		if (!doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() + 1);
 			m_videoRatings.get(savedVideo.getId()).add(principal.getName());
@@ -152,8 +163,9 @@ public class VideoController {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} **/
 		}
+	
 		
 		return null;
 		
@@ -175,6 +187,18 @@ public class VideoController {
 		image.update();
 		MarvinImageIO.saveImage(image, "./videos/"+filepath);
 		
+		// does this user own the selfie?  If not, return a bad request
+		String this_owner = savedVideo.getOwner();
+		if (this_owner != principal.getName())
+		{
+			try {
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		}
+		
+		/**
 		if (doesRatingExist(savedVideo, principal.getName())) {
 			savedVideo.setLikes(savedVideo.getLikes() - 1);
 			m_videoRatings.get(savedVideo.getId()).remove(principal.getName());
@@ -187,8 +211,8 @@ public class VideoController {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		}
+			} **/
+		} 
 		
 		return null;
 	}

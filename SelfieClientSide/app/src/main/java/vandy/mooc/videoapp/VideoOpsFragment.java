@@ -104,6 +104,7 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
+                Toast.makeText(mActivity.get().getBaseContext(), "Selfie Grayscale - Complete", Toast.LENGTH_SHORT).show();
             }
 
         }.execute();
@@ -128,6 +129,7 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
+                Toast.makeText(mActivity.get().getBaseContext(), "Selfie Inverted - Complete", Toast.LENGTH_SHORT).show();
             }
 
         }.execute();
@@ -176,7 +178,6 @@ public class VideoOpsFragment extends Fragment {
 
                 try {
                     mVideoSvcApi.setVideoData(id, f);
-                   // Toast.makeText(mActivity.get().getBaseContext(), "Video Uploading", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     toastError(e.getMessage());
                     Log.d("Exception&&&&&", e.getMessage());
@@ -189,7 +190,7 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
-                Toast.makeText(mActivity.get().getBaseContext(), "Video Upload Complete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity.get().getBaseContext(), "Selfie Upload Complete", Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }
@@ -226,7 +227,7 @@ public class VideoOpsFragment extends Fragment {
             @Override
             protected void onPostExecute(Void aVoid) {
                 getAvailableVideos();
-                Toast.makeText(mActivity.get().getBaseContext(), "Video Download Complete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mActivity.get().getBaseContext(), "Selfie Download Complete", Toast.LENGTH_SHORT).show();
 
             }
         }.execute();

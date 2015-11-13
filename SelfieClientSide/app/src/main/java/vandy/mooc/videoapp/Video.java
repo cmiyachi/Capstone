@@ -104,13 +104,8 @@ public class Video {
 
     @Override
     public String toString() {
-        return "Video"+ id +
+        return "Selfie"+ id +
                 "(name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", duration=" + duration +
-                ", owner='" + owner + '\'' +
-                ", likes=" + likes +
-                ", liked=" + liked +
                 ')';
     }
 }

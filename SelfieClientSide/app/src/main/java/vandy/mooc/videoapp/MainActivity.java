@@ -113,7 +113,7 @@ public class MainActivity extends ListActivity {
 
     public void likeButton(View view) {
         if (selectedListItem == -1)
-        {Toast.makeText(this, "No video selected" , Toast.LENGTH_SHORT).show();}
+        {Toast.makeText(this, "No selfie selected" , Toast.LENGTH_SHORT).show();}
         else {
 
             Video video = (Video) getListAdapter().getItem(selectedListItem);
