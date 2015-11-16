@@ -1,5 +1,6 @@
 package vandy.mooc.videoapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.FragmentManager;
@@ -76,7 +77,8 @@ public class MainActivity extends ListActivity {
 
         mSharedPreferences = getSharedPreferences("selfie", Context.MODE_PRIVATE);
 
-        setAlarm(null,false);
+        setAlarm(null, false);
+
     }
 
 
